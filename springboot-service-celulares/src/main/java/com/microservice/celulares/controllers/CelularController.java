@@ -28,7 +28,7 @@ public class CelularController {
 		return service.findAll();
 	}
 	
-	@DeleteMapping("/celular/(id)")
+	@DeleteMapping("/celular/{id}")
 	public ResponseEntity<Void> drop(@PathVariable Long id){
 		service.deleteById(id);
 		return ResponseEntity.noContent().build();
@@ -40,7 +40,7 @@ public class CelularController {
 		return new ResponseEntity<>(cel, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/celular/(id)")
+	@PutMapping("/celular/{id}")
 	public ResponseEntity<Celular> update(@PathVariable Long id, @RequestBody Celular instance){
 		if(service.existsById(id)) {
 			instance.setId(id);
