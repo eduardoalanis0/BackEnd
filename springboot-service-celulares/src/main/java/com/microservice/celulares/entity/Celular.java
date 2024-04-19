@@ -32,7 +32,7 @@ public class Celular implements Serializable{
 	
 	@Column(name = "created_at")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date CreatedAt;
+	private Date createdAt;
 
 	@Transient
 	private Integer port;
@@ -61,12 +61,12 @@ public class Celular implements Serializable{
 		this.marca = marca;
 	}
 
-	public Date getCreateAt() {
-		return CreatedAt;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreatedAt(Date createAt) {
-		this.CreatedAt = createAt;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public Integer getPort() {

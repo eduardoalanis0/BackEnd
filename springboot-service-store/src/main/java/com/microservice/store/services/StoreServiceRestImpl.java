@@ -21,7 +21,7 @@ public class StoreServiceRestImpl implements StoreService {
 	
 	@Override
 	public List<Store> findAll() {
-		List<Celular> celulares = Arrays.asList(clientRest.getForObject("http://localhost:8081/list", Celular[].class));
+		List<Celular> celulares = Arrays.asList(clientRest.getForObject("http://localhost:{port}/list", Celular[].class));
 		return celulares.stream().map(c -> new Store(c,5)).collect(Collectors.toList());
 	}
 
@@ -29,7 +29,7 @@ public class StoreServiceRestImpl implements StoreService {
 	public Store findById(Long id, Integer cantidad) {
 		Map<String, String> pathVariables = new HashMap<>(); 
 		pathVariables.put("id", id.toString());
-		Celular cel = clientRest.getForObject("http://localhost:8081/celular/{id}", Celular.class, pathVariables);
+		Celular cel = clientRest.getForObject("http://localhost:{port}/celular/{id}", Celular.class, pathVariables);
 		return new Store(cel, cantidad);
 	}
 
