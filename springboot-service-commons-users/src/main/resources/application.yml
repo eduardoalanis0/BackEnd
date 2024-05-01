@@ -1,0 +1,6 @@
+#spring.application.name=springboot-service-commons-users
+server:
+  port: 8085
+spring:
+  application:
+    name: service-commons-users
