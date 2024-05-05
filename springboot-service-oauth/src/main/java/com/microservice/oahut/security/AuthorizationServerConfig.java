@@ -34,11 +34,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		
 		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoToken, JwtAccessTokenConverter()));
+		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoToken, jwtAccessTokenConverter()));
 		
 		endpoints.authenticationManager(authenticationManager)
 		.tokenStore(jwtTokenStore())
-		.accessTokenConverter(JwtAccessTokenConverter())
+		.accessTokenConverter(jwtAccessTokenConverter())
 		.tokenEnhancer(tokenEnhancerChain); //jwt
 	}
 
@@ -60,11 +60,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Bean
 	public JwtTokenStore jwtTokenStore() {
-		return new JwtTokenStore(JwtAccessTokenConverter());
+		return new JwtTokenStore(jwtAccessTokenConverter());
 	}
 
 	@Bean
-	public JwtAccessTokenConverter JwtAccessTokenConverter() {
+	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
 		tokenConverter.setSigningKey("llave_belica_4x4");
 		return tokenConverter;
